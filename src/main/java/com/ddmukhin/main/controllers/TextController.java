@@ -19,7 +19,7 @@ public class TextController {
         this.textRepository = textRepository;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/texts/{id}")
     public ResponseEntity<Text> getTextById(@PathVariable(name = "id") Long id){
 
         Optional<Text> textHolder = textRepository.findById(id);
@@ -51,6 +51,12 @@ public class TextController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteText(@PathVariable(name = "id") Long id){
         textRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteAll(){
+        textRepository.deleteAll();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
