@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class TextRepositoryTest {
+class TextRepositoryIntegrationTest {
 
     @Autowired
     private TestEntityManager entityManager;
