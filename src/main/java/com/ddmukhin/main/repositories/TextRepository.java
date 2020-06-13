@@ -1,4 +1,4 @@
-package com.ddmukhin.main.repositoriees;
+package com.ddmukhin.main.repositories;
 
 import com.ddmukhin.main.models.Text;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,12 +1,13 @@
 package com.ddmukhin.main.controllers;
 
 import com.ddmukhin.main.models.Text;
-import com.ddmukhin.main.repositoriees.TextRepository;
+import com.ddmukhin.main.repositories.TextRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
@@ -20,7 +21,13 @@ public class TextController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Text> getTextById(@PathVariable(name = "id") Long id){
-        return new ResponseEntity<>(textRepository.findById(id).orElse(new Text()), HttpStatus.OK);
+
+        Optional<Text> textHolder = textRepository.findById(id);
+
+        if(textHolder.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(textHolder.get(), HttpStatus.OK);
     }
 
     @GetMapping("/texts")
