@@ -1,4 +1,4 @@
-package com.ddmukhin.models;
+package com.ddmukhin.main.models;
 
 import javax.persistence.*;
 
