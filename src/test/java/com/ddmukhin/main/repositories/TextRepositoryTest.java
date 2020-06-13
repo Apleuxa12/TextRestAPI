@@ -54,4 +54,20 @@ class TextRepositoryTest {
         assertEquals(found.size(), 3);
     }
 
+    @Test
+    public void findOneByThemeTextTest(){
+        Text text1 = new Text("theme1", "value1"); //ID: 1
+        Text text2 = new Text("theme2", "value2"); //ID: 2
+        Text text3 = new Text("theme3", "value3"); //ID: 3
+
+        entityManager.persist(text1);
+        entityManager.persist(text2);
+        entityManager.persist(text3);
+        entityManager.flush();
+
+        List<Text> found = textRepository.findByTheme("theme1");
+
+        assertEquals(found.get(0).getId(), 1L);
+    }
+
 }
